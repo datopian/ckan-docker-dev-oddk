@@ -1,5 +1,9 @@
 FROM ckan/ckan-dev:2.11
 
+USER root
+RUN mkdir /srv/app/.local && chown ckan /srv/app/.local
+USER ckan
+
 # Install any extensions needed by your CKAN instance
 # - Make sure to add the plugins to CKAN__PLUGINS in the .env file
 # - Also make sure all provide all extra configuration options, either by:
@@ -33,6 +37,10 @@ FROM ckan/ckan-dev:2.11
 
 # Clone the extension(s) your are writing for your own project in the `src` folder
 # to get them mounted in this image at runtime
+
+#RUN pip3 install -e 'git+https://github.com/ckan/ckanext-scheming.git@master#egg=ckanext-scheming'
+
+USER root
 
 # Copy custom initialization scripts
 COPY --chown=ckan-sys:ckan-sys docker-entrypoint.d/* /docker-entrypoint.d/

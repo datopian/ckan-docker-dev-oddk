@@ -41,12 +41,12 @@ do
     fi
 done
 
+# Add ckan.datapusher.api_token to the CKAN config file (updated with corrected value later)
+ckan config-tool $CKAN_INI ckan.datapusher.api_token=xxx
+
 # Set debug to true
 echo "Enabling debug mode"
 ckan config-tool $CKAN_INI -s DEFAULT "debug = true"
-
-# Add ckan.datapusher.api_token to the CKAN config file (updated with corrected value later)
-ckan config-tool $CKAN_INI ckan.datapusher.api_token=xxx
 
 # Set up the Secret key used by Beaker and Flask
 # This can be overriden using a CKAN___BEAKER__SESSION__SECRET env var

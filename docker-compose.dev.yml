@@ -5,7 +5,7 @@ volumes:
   pg_data:
   solr_data:
   pip_cache:
-  site_packages:
+  #site_packages:
   local_bin:
   vscode_server:
 
@@ -30,7 +30,7 @@ services:
       - ckan_storage:/var/lib/ckan
       - ./src:/srv/app/src_extensions
       - pip_cache:/root/.cache/pip
-      - site_packages:/usr/local/lib/python3.10/site-packages
+      #- site_packages:/usr/local/lib/python3.10/site-packages
       - local_bin:/usr/local/bin
       - vscode_server:/root/.vscode-server
     restart: unless-stopped

@@ -1,4 +1,4 @@
-name: ckan-vs-dev
+name: ckan-oddk-dev
 
 volumes:
   ckan_storage:
@@ -12,7 +12,7 @@ volumes:
 services:
 
   ckan-dev:
-    container_name: ckan-dev-vs-2.11
+    container_name: ckan-dev-oddk-2.11
     build:
       context: ckan/
       dockerfile: Dockerfile.dev
@@ -41,7 +41,7 @@ services:
       retries: 3
 
   datapusher:
-    container_name: datapusher-vs-2.11
+    container_name: datapusher-oddk-2.11
     image: ckan/ckan-base-datapusher:${DATAPUSHER_VERSION}
     restart: unless-stopped
     healthcheck:
@@ -51,7 +51,7 @@ services:
       retries: 3
 
   db:
-    container_name: db-vs-2.11
+    container_name: db-oddk-2.11
     build:
       context: postgresql/
     environment:
@@ -71,7 +71,7 @@ services:
       test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_DB}"]
 
   solr:
-    container_name: solr-vs-2.11
+    container_name: solr-oddk-2.11
     image: ckan/ckan-solr:${SOLR_IMAGE_VERSION}
     volumes:
       - solr_data:/var/solr
@@ -80,7 +80,7 @@ services:
       test: ["CMD", "wget", "-qO", "/dev/null", "http://localhost:8983/solr/"]
 
   redis:
-    container_name: redis-vs-2.11
+    container_name: redis-oddk-2.11
     image: redis:${REDIS_VERSION}
     restart: unless-stopped
     healthcheck:

@@ -104,7 +104,7 @@ To build the images:
 
 To install extensions from the `src` directory:
 
-	docker compose -f docker-compose.dev.yml run -u root ckan-dev ./install_src.sh
+	docker compose -f docker-compose.dev.yml exec -i -u root ckan-dev ./install_src.sh
 
 To start the containers:
 
